@@ -20,7 +20,7 @@ const LoginPage = () => {
             const { role } = await loginWithEmail(email, password);
             message.success("Đăng nhập thành công!");
             if (role === "admin") {
-                navigate("/order");
+                navigate("/admin/order");
             } else {
                 navigate("/");
             }

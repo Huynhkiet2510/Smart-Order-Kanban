@@ -10,7 +10,7 @@ const LoginButton = () => {
             const { role: currentRole } = await loginWithGoogle();
             console.log("Role vừa nhận được:", currentRole);
             if (currentRole === "admin") {
-                navigate("/order");
+                navigate("/admin/order");
             } else {
                 navigate("/");
             }
