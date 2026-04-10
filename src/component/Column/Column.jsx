@@ -39,7 +39,6 @@ const Column = ({ title, color, columnId }) => {
 
     return (
         <div className="bg-[#F2F2F2] w-[280px] rounded-2xl p-2 h-full border border-gray-200 flex flex-col">
-
             <div className="flex justify-between items-center mb-4 flex-shrink-0">
                 <div className="flex gap-2 items-center">
                     <GripVertical size={18} className="text-gray-500" />

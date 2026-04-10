@@ -1,33 +1,17 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
-import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
-import { db } from '../../../firebase';
 import OrderCard from './OrderCard';
 import Pagination from './Pagination';
+import OrderSkeleton from "../../../component/Skeleton/OrderSkeleton";
+import { useOrderUser } from '../../../hooks/useOrderUser';
 
 const TrackOrderPage = () => {
   const { user } = useAuth();
-  const [userOrders, setUserOrders] = useState([]);
   const [statusFilter, setStatusFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  useEffect(() => {
-    if (!user?.uid) return;
-
-    const q = query(
-      collection(db, "card_orders"),
-      where("userId", "==", user.uid),
-      orderBy("createdAt", "desc")
-    );
-
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const orders = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setUserOrders(orders);
-    }, (error) => console.error("Lỗi:", error));
-
-    return () => unsubscribe();
-  }, [user?.uid]);
+  const { userOrders, isLoading } = useOrderUser(user?.uid);
 
   const filteredOrders = useMemo(() => {
     return statusFilter === 'all'
@@ -62,14 +46,19 @@ const TrackOrderPage = () => {
           </select>
         </div>
 
-        {filteredOrders.length === 0 ? (
+        {/* LOGIC HIỂN THỊ CHÍNH */}
+        {isLoading ? (
+          <div className="space-y-6">
+            {Array.from({ length: 3 }).map((_, i) => <OrderSkeleton key={i} />)}
+          </div>
+        ) : filteredOrders.length === 0 ? (
           <div className="bg-white p-12 rounded-xl shadow-sm text-center border border-dashed">
             <p className="text-gray-400 italic">Không có đơn hàng nào trong mục này.</p>
           </div>
         ) : (
           <>
             <div className="space-y-6">
-              {displayOrders.map(order => <OrderCard key={order.id} order={order} />)}
+              {displayOrders.map((order) => <OrderCard key={order.id} order={order} />)}
             </div>
 
             <Pagination

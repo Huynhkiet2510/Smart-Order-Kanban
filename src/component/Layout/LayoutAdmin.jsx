@@ -12,7 +12,6 @@ const LayoutAdmin = () => {
 
       <main className="ml-64 flex-1 flex flex-col bg-gray-100 h-full">
         <Navbar />
-
         <div className="flex-1 overflow-y-auto">
           <Outlet />
         </div>

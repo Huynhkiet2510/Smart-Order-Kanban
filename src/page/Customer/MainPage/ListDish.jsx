@@ -4,6 +4,7 @@ import { Plus, ShoppingBag, Fish } from "lucide-react";
 import { addCart } from "../../../store/cartSlice"
 import { useDispatch, useSelector } from "react-redux";
 import CartOrder from "../CartOrder/CartOrder";
+import DishSkeleton from "../../../component/Skeleton/DishSkeleton"
 
 const FIXED_CATEGORIES = [
   { key: "All", label: "Tất cả" },
@@ -14,7 +15,7 @@ const FIXED_CATEGORIES = [
 ];
 
 const MainPage = () => {
-  const { dishes } = useDish();
+  const { dishes, isLoading } = useDish();
   const [activeTab, setActiveTab] = useState("All");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -77,47 +78,51 @@ const MainPage = () => {
       </h2>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {filteredDishes.map((d) => (
-          <article
-            key={d.id}
-            className="bg-white rounded-2xl overflow-hidden shadow-sm"
-          >
+        {isLoading ? (
+          Array(6).fill(0).map((_, index) => <DishSkeleton key={index} />)
+        ) : (
+          filteredDishes.map((d) => (
+            <article
+              key={d.id}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm"
+            >
 
-            <div className="h-48 overflow-hidden">
-              <img
-                src={d.image}
-                alt={d.name}
-                loading="lazy"
-                className="w-full h-full object-cover hover:scale-110 transition duration-300"
-              />
-            </div>
-
-            <div className="flex justify-between items-center  p-4 text-center">
-              <div>
-                <h3 className="font-semibold text-base line-clamp-2">
-                  {d.name}
-                </h3>
-
-                <p className="text-red-500 font-bold text-lg mt-2">
-                  {d.price?.toLocaleString()}đ
-                </p>
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={d.image}
+                  alt={d.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover hover:scale-110 transition duration-300"
+                />
               </div>
 
-              {d.isDisable === true ? (
-                <span className="bg-red-100 text-red-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm border border-red-200">
-  Hết hàng
-</span>
-              ) : (
-                <button
-                  onClick={() => dispatch(addCart(d))}
-                  className="mt-3 bg-red-500 hover:bg-red-600 text-white p-2 rounded-xl transition"
-                >
-                  <Plus />
-                </button>
-              )}
-            </div>
-          </article>
-        ))}
+              <div className="flex justify-between items-center  p-4 text-center">
+                <div>
+                  <h3 className="font-semibold text-base line-clamp-2">
+                    {d.name}
+                  </h3>
+
+                  <p className="text-red-500 font-bold text-lg mt-2">
+                    {d.price?.toLocaleString()}đ
+                  </p>
+                </div>
+
+                {d.isDisable === true ? (
+                  <span className="bg-red-100 text-red-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm border border-red-200">
+                    Hết hàng
+                  </span>
+                ) : (
+                  <button
+                    onClick={() => dispatch(addCart(d))}
+                    className="mt-3 bg-red-500 hover:bg-red-600 text-white p-2 rounded-xl transition"
+                  >
+                    <Plus />
+                  </button>
+                )}
+              </div>
+            </article>
+          ))
+        )}
       </div>
 
       <CartOrder isOpen={isOpen} onClose={() => setIsOpen(false)} />

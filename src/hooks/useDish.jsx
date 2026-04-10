@@ -4,6 +4,7 @@ import { db } from '../firebase';
 
 export const useDish = () => {
   const [dishes, setDishes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const q = query(collection(db, "dishes"), orderBy("createdAt", "desc"));
@@ -20,14 +21,17 @@ export const useDish = () => {
       });
 
       setDishes(data);
+      setIsLoading(false);
     }, (error) => {
       console.error("Lắng nghe dữ liệu thất bại:", error);
+      setIsLoading(false); 
     });
 
     return () => unsubscribe();
   }, []);
 
   return {
-    dishes
+    dishes,
+    isLoading 
   };
 };
