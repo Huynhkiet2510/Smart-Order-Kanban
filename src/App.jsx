@@ -5,7 +5,7 @@ import OrderManagement from './page/Admin/OrderManagement/OrderManagement'
 import DishManagement from "./page/Admin/DishManagement/DishManagement";
 import History from "./page/Admin/HistoryManagement/History";
 import Login from "./page/Customer/LoginPage/LoginPage";
-import ListDish from "./page/Customer/MainPage/ListDish";
+import ListDish from "./page/Customer/ListDishPage/ListDishPage";
 import CheckOut from "./page/Customer/CheckoutPage/CheckoutPage";
 import PaymentSuccess from "./page/Customer/PaymentSuccessPage/PaymentSuccessPage";
 import TrackOrder from "./page/Customer/TrackOrderPage/TrackOrderPage";

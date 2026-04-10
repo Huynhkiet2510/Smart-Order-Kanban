@@ -25,6 +25,7 @@ const CartOrder = ({ isOpen, onClose }) => {
           <h2 className="text-xl font-bold">Giỏ hàng của bạn</h2>
           <button
             onClick={onClose}
+            aria-label="Đóng giỏ hàng"
             className="text-gray-500 hover:text-black text-2xl font-bold"
           >
             ✕
@@ -55,6 +56,7 @@ const CartOrder = ({ isOpen, onClose }) => {
                   <div className="flex items-center gap-2 mt-2">
                     <button
                       onClick={() => dispatch(decreaseQty(item.id))}
+                      aria-label={`Giảm số lượng ${item.name}`}
                       className="p-1 bg-gray-100 rounded hover:bg-gray-200"
                     >
                       <Minus size={16} />
@@ -66,6 +68,7 @@ const CartOrder = ({ isOpen, onClose }) => {
 
                     <button
                       onClick={() => dispatch(increaseQty(item.id))}
+                      aria-label={`Tăng số lượng ${item.name}`}
                       className="p-1 bg-gray-100 rounded hover:bg-gray-200"
                     >
                       <Plus size={16} />
