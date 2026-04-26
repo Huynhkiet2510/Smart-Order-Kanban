@@ -4,7 +4,7 @@ import { ShoppingBag } from "lucide-react";
 import { useDish } from "../../../hooks/useDish";
 import CartOrder from "../CartOrder/CartOrder";
 import DishSkeleton from "../../../component/Skeleton/DishSkeleton";
-import DishCard from "./DishCard"; 
+import DishCard from "./DishCard";
 import CategoryBar from "./CategoryBar";
 
 const ListDishPage = () => {
@@ -17,11 +17,11 @@ const ListDishPage = () => {
     carts.reduce((sum, item) => sum + item.quantity, 0),
     [carts]);
 
-  useEffect(() => {
-    document.title = activeTab === "All"
-      ? "Đặc sản Cà Mau - Menu món ăn"
-      : `${activeTab} - Đặc sản Cà Mau`;
-  }, [activeTab]);
+  // useEffect(() => {
+  //   document.title = activeTab === "All"
+  //     ? "Đặc sản Cà Mau - Menu món ăn"
+  //     : `${activeTab} - Đặc sản Cà Mau`;
+  // }, [activeTab]);
 
   const filteredDishes = useMemo(() => {
     if (!dishes) return [];

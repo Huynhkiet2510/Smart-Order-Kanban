@@ -79,7 +79,6 @@ const NavbarCustomer = () => {
 
                         {isOpen && (
                             <div className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden animate-fadeIn">
-
                                 <button
                                     onClick={() => {
                                         navigate("/profile");
@@ -91,7 +90,7 @@ const NavbarCustomer = () => {
                                     Trang cá nhân
                                 </button>
 
-                                {/* Orders */}
+                               
                                 <button
                                     onClick={() => navigate("/track-order")}
                                     className="w-full flex items-center gap-2 px-4 py-3 hover:bg-gray-50 text-sm"

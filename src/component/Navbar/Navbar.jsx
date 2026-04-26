@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const { user } = useAuth();
 
-  const isOrderPage = location.pathname === "/order";
+  const isOrderPage = location.pathname === "/admin/orders";
   const searchQuery = useSelector((state) => state.orders.searchQuery);
 
 
