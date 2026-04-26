@@ -15,9 +15,9 @@ export const uploadToCloudinary = async (file) => {
         );
 
         const data = await response.json();
-        
+
         if (data.secure_url) {
-            return data.secure_url; 
+            return data.secure_url;
         } else {
             throw new Error(data.error?.message || "Upload thất bại");
         }

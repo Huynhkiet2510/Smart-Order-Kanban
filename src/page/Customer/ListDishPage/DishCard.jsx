@@ -13,8 +13,8 @@ const DishCard = ({ dish, index }) => {
           src={dish.image}
           alt={dish.name}
           loading={index < 4 ? "eager" : "lazy"}
-          fetchpriority={index < 3 ? "high" : "auto"}
-          className="w-full h-full object-cover hover:scale-110 transition duration-300"
+          fetchPriority={index < 3 ? "high" : "auto"}
+          className="w-full h-full object-cover"
         />
       </div>
 
