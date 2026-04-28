@@ -25,7 +25,6 @@ const ProfilePage = () => {
                     </div>
                 </div>
 
-                {/* INFO */}
                 <div className="mt-6 space-y-4">
 
                     <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl">

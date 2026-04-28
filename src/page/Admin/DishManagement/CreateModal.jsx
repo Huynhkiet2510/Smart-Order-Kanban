@@ -74,7 +74,7 @@ const CreateModal = ({ form, open, onCancel, onCreate, confirmLoading, isEditing
                 >
                     <Select placeholder="Chọn danh mục món ăn">
                         <Option value="Món chính">Món chính</Option>
-                        <Option value="Gà rán">Món phụ</Option>
+                        <Option value="Món phụ">Món phụ</Option>
                         <Option value="Đồ uống">Đồ uống</Option>
                         <Option value="Tráng miệng">Tráng miệng</Option>
                     </Select>

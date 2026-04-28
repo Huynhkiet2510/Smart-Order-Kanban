@@ -28,7 +28,7 @@ const RegisterPage = () => {
       });
 
       message.success('Đăng ký tài khoản thành công!');
-      navigate('/login');
+      navigate('/', { replace: true });
     } catch (err) {
       console.error("Lỗi đăng ký:", err);
       if (err.code === 'auth/email-already-in-use') {

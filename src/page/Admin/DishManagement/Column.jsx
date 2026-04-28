@@ -42,10 +42,8 @@ export const getDishColumns = (actions) => {
       key: 'category',
       width: 250,
       filters: [
-        { text: 'Gà rán', value: 'Gà rán' },
-        { text: 'Burger', value: 'Burger' },
-        { text: 'Mì Ý', value: 'Mì Ý' },
-        { text: 'Khoai & Món phụ', value: 'Khoai & Món phụ' },
+        { text: 'Món chính', value: 'Món chính' },
+        { text: 'Món phụ', value: 'ón phụ' },
         { text: 'Đồ uống', value: 'Đồ uống' },
         { text: 'Tráng miệng', value: 'Tráng miệng' },
       ],

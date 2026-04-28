@@ -60,7 +60,7 @@ const DishManagement = () => {
 
                         pagination={{
                             pageSize: 10,
-                            showTotal: (total) => `Tổng cộng ${total} đơn hàng`,
+                            showTotal: (total) => `Tổng cộng ${total} món ăn`,
                             className: "mt-4",
                             placement: "bottomRight"
                         }}

@@ -40,8 +40,6 @@ function App() {
               <Route path="/payment-success" element={<PaymentSuccess />} />
             </Route>
 
-            <Route index element={<ListDish />} />
-
             <Route element={<CheckoutRoute />}>
               <Route path="/checkout" element={<CheckOut />} />
             </Route>
